@@ -1,13 +1,6 @@
 name: trigger-remote-workflow
 on:
   workflow_dispatch:
-    inputs:
-      repo: 
-        description: 'some repo in your project'
-        required: true
-      ref:
-        description: 'some hash, tag, or ref in your repo'
-        required: true
 
 jobs:
   remote-job:
