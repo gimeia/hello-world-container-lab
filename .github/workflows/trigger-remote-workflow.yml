@@ -19,5 +19,5 @@ jobs:
          -H "Accept: application/vnd.github.v3+json" \
          -H "Authorization: token ${{ secrets.TEST_PAT }}" \
          https://api.github.com/repos/hippyod/cicd-infra/actions/workflows/remote-workflow.yml/dispatches \
-         -d '{"ref":"master", inputs: {"repo": "${{ env.GITHUB_REPOSITORY }}", "ref": "${{ env.GITHUB_REF }}"}}'
+         -d '{"ref":"master", "inputs": {"repo": "${{ env.GITHUB_REPOSITORY }}", "ref": "${{ env.GITHUB_REF }}"}}'
 
