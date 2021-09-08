@@ -5,13 +5,15 @@ on:
 jobs:
   remote-job:
     runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.TEST_PAT }}
     steps:
     - run: |
         echo 'GITHUB_REPOSITORY: '"$GITHUB_REPOSITORY"'}'
         curl \
          -X POST \
          -H "Accept: application/vnd.github.v3+json" \
-         -H ":${{ secrets.TEST_PAT }}" \
+         -u ":$TEST_PAT" \
          https://api.github.com/repos/hippyod/cicd-infra/actions/workflows/remote-workflow.yml/dispatches \
          -d '{"ref":"master", "inputs": {"repo": "'"$GITHUB_REPOSITORY"'", "ref": "'"$GITHUB_REF"'}}'
 
