@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo 'env.GITHUB_REPOSITORY: ${{ env.GITHUB_REPOSITORY }}'
+        echo "env.GITHUB_REPOSITORY: ${{ env.GITHUB_REPOSITORY }}"
         curl \
          -X POST \
          -H "Accept: application/vnd.github.v3+json" \
