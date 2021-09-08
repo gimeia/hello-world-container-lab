@@ -9,7 +9,6 @@ jobs:
       TOKEN: ${{ secrets.TEST_PAT }}
     steps:
     - run: |
-        echo 'GITHUB_REPOSITORY: '"$GITHUB_REPOSITORY"
         curl \
          -X POST \
          -H "Accept: application/vnd.github.v3+json" \
