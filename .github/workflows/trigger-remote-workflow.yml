@@ -1,23 +1,27 @@
 name: trigger-remote-workflow
 on:
   workflow_dispatch:
+    inputs:
+      workflow-name:
+        description: Name of workflow to run in cicd-infra
+        required: true
+        default: remote-workflow
 
 jobs:
   remote-job:
     runs-on: ubuntu-latest
     env:
-      TOKEN: ${{ secrets.TEST_PAT }}
+      CICD_INFRA_SVC_ACCT_PAT: ${{ secrets.TEST_PAT }}
+      WORKFLOW_NAME: ${{ github.events.inputs.workflow-name }}
     steps:
-    - run: |
-        curl \
-         -X POST \
-         -H "Accept: application/vnd.github.v3+json" \
-         -H "Authorization: token $TOKEN" \
-         https://api.github.com/repos/hippyod/cicd-infra/actions/workflows/remote-workflow.yml/dispatches \
-         -d '{"ref":"master",
-              "inputs": {
-                "repo": "'${GITHUB_REPOSITORY}'",
-                "ref": "'${GITHUB_REF}'"
-              }
-            }'
+    - name: Checkout CICD infra library
+      uses: actions/checkout@v2
+      with:
+        repository: hippyod/cicd-infra
+        ref: main
+        path: cicd-infra
+        token: ${{ secrets.TEST_PAT }}
+    - name: Trigger remote workflow
+      run: |
+        ${GITHUB_WORKSPACE}/cicd-infra/scripts/trigger-remote-workflow/trigger-remote-workflow.sh ${{ github.events.inputs.workflow-name }} ${CICD_INFRA_SVC_ACCT_PAT}
 
