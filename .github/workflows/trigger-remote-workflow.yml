@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CICD_INFRA_SVC_ACCT_PAT: ${{ secrets.TEST_PAT }}
-      WORKFLOW_NAME: ${{ github.events.inputs.workflow-name }}
+      WORKFLOW_NAME: ${{ github.event.inputs.workflow-name }}
     steps:
     - name: Checkout CICD infra library
       uses: actions/checkout@v2
