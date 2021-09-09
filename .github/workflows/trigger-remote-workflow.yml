@@ -23,5 +23,5 @@ jobs:
         token: ${{ secrets.TEST_PAT }}
     - name: Trigger remote workflow
       run: |
-        ${GITHUB_WORKSPACE}/cicd-infra/scripts/trigger-remote-workflow/trigger-remote-workflow.sh ${{ github.events.inputs.workflow-name }} ${CICD_INFRA_SVC_ACCT_PAT}
+        ${GITHUB_WORKSPACE}/cicd-infra/scripts/trigger-remote-workflow/trigger-remote-workflow.sh ${WORKFLOW_NAME} ${CICD_INFRA_SVC_ACCT_PAT}
 
