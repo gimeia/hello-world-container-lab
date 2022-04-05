@@ -21,8 +21,8 @@ public class SpringTestApplication implements CommandLineRunner {
         }   
     }
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringTestApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringTestApplication.class, args);
+    }
 
 }
