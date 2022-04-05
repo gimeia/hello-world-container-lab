@@ -1,4 +1,4 @@
-FROM docker.io/adoptopenjdk:11-jre-hotspot
+FROM docker.io/adoptopenjdk/openjdk11:x86_64-ubi-minimal-jre-11.0.14.1_1
 
 USER root
 
