@@ -1,4 +1,4 @@
-package org.hippy.actiontest;
+package org.hippy.springtest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ActiontestApplication implements CommandLineRunner {
+public class SpringTestApplication implements CommandLineRunner {
 
     @Value("${message.welcome}")
     private String welcomeMsg;
@@ -22,7 +22,7 @@ public class ActiontestApplication implements CommandLineRunner {
     }
 
 	public static void main(String[] args) {
-		SpringApplication.run(ActiontestApplication.class, args);
+		SpringApplication.run(SpringTestApplication.class, args);
 	}
 
 }
