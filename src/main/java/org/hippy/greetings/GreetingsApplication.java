@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.StringUtils;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +26,7 @@ public class GreetingsApplication implements CommandLineRunner {
         while (true) {
             String msg = welcomeMsg;
             
-            if (welcomeMsgFilePath != null) {
+            if (!StringUtils.isBlank(welcomeMsgFilePath)) {
                 File welcomeMsgFile = new File (welcomeMsgFilePath);
                 if (welcomeMsgFile.exists()) {
                     try (BufferedReader br = new BufferedReader(new FileReader(welcomeMsgFile))) {
