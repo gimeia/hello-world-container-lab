@@ -9,6 +9,7 @@ mvn install -DskipTests=true
 ./mvnw spring-boot:run
 
 # check for Greeting
+http://localhost:8080/
 ```
 
 ## Commands to run (you can substitute docker for podman)
