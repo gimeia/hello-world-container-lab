@@ -1,9 +1,14 @@
 # Basic hello world containerization lab
 
-- To build jar
 
 ```sh
+# to build jar
 mvn install -DskipTests=true
+
+# to run application
+./mvnw spring-boot:run
+
+# check for Greeting
 ```
 
 ## Commands to run (you can substitute docker for podman)
@@ -19,6 +24,9 @@ $ docker build -t test/spring-test .
 $ docker images
 
 $ docker run test/spring-test
+
+# OR to see greeting on localhost:8080
+$ docker run -p 8080/8080 test/spring-test 
 
 $ crtl-c
 # if this does not work open new terminal get the Container ID and use it to stop 
