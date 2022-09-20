@@ -8,6 +8,6 @@ spec:
   containers:
   - image: quay.io/ohthree/spring-test
     name: mypod
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
+    env:
+      - name: MESSAGE_WELCOME
+        value: "Hello from Pod Defn"

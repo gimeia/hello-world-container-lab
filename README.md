@@ -22,6 +22,9 @@ $ vim Dockerfile
 
 $ docker build -t test/spring-test .
 
+# OR if you ran mvn build locally
+$ docker build -f Dockerfile.simple -t test/spring-test . 
+
 $ docker images
 
 $ docker run test/spring-test
@@ -48,6 +51,12 @@ bash-4.4$ java -version
 # Externalizing configuration, use different Message
 
 $ docker run -e MESSAGE_WELCOME="Hello, world DEV" test/spring-test
+
+# Deploying to Openshift/kubernetes - replace oc with kubectl
+$ oc apply -f yaml/mypod.yaml
+
+# see streaming logs
+$ oc logs -f mypod
 
 ```
 
