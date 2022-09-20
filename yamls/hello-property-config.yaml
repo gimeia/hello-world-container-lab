@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: hello-property-config
-data:
-  hello.properties: MESSAGE_WELCOME=""Hello from Properties File"
