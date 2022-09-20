@@ -1,0 +1,44 @@
+﻿
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hello-world
+  labels:
+    app: hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+        deployment: hello-world
+    spec:
+      containers:
+        - name: hello-world-container-lab-git
+          image: quay.io/ohthree/spring-test 
+          env:
+            - name: MESSAGE_WELCOME
+              valueFrom:
+                configMapKeyRef:
+                  name: hello-config
+                  key: MESSAGE_WELCOME        
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "1"
+              memory: 500Mi
+            requests:
+              cpu: "0.1"
+              memory: 128Mi
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
